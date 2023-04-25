@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   double_pointer_len.c                               :+:      :+:    :+:   */
+/*   remunder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emgarcia <emgarcia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vguttenb <vguttenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/25 16:32:05 by emgarcia          #+#    #+#             */
-/*   Updated: 2023/03/29 23:31:16 by emgarcia         ###   ########.fr       */
+/*   Created: 2023/03/25 18:22:32 by vguttenb          #+#    #+#             */
+/*   Updated: 2023/03/25 18:59:27 by vguttenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube3d.h"
 
-size_t	double_pointer_len(char **double_pointer)
+double	remunder(double number, double base)
 {
-	size_t	len;
+	double	result;
 
-	if (!double_pointer)
-		return (0);
-	len = 0;
-	while (double_pointer[len])
-		len++;
-	return (len);
+	result = remainder(number, base);
+	if (result < 0)
+		return (result + base);
+	return (result);
 }

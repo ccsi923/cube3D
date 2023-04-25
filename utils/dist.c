@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   double_pointer_len.c                               :+:      :+:    :+:   */
+/*   dist.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emgarcia <emgarcia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vguttenb <vguttenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/25 16:32:05 by emgarcia          #+#    #+#             */
-/*   Updated: 2023/03/29 23:31:16 by emgarcia         ###   ########.fr       */
+/*   Created: 2023/03/25 18:25:25 by vguttenb          #+#    #+#             */
+/*   Updated: 2023/03/25 19:01:06 by vguttenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube3d.h"
 
-size_t	double_pointer_len(char **double_pointer)
+double	dist(double x_a, double y_a, double x_b, double y_b)
 {
-	size_t	len;
+	double	x_side;
+	double	y_side;
+	double	result;
 
-	if (!double_pointer)
-		return (0);
-	len = 0;
-	while (double_pointer[len])
-		len++;
-	return (len);
+	x_side = x_a - x_b;
+	y_side = y_a - y_b;
+	result = sqrt(pow(x_side, 2) + pow(y_side, 2));
+	return (result);
 }

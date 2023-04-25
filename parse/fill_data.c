@@ -6,7 +6,7 @@
 /*   By: emgarcia <emgarcia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 04:01:39 by emgarcia          #+#    #+#             */
-/*   Updated: 2022/08/25 19:11:14 by emgarcia         ###   ########.fr       */
+/*   Updated: 2023/04/24 16:16:59 by emgarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,15 @@ void	fill_cordenate(t_general *g, size_t i, size_t *j, int opt)
 	{
 		if (!ft_strncmp(&g->file_char[i][*j], ".xpm", 4))
 		{
-			*j += 4;
+			*j += 3;
 			if (opt == 1)
-				g->no_texture = ft_substr(g->file_char[i], ini, (*j) - ini);
+				g->no_texture = ft_substr(g->file_char[i], ini, (*j + 1) - ini);
 			if (opt == 2)
-				g->so_texture = ft_substr(g->file_char[i], ini, (*j) - ini);
+				g->so_texture = ft_substr(g->file_char[i], ini, (*j + 1) - ini);
 			if (opt == 3)
-				g->we_texture = ft_substr(g->file_char[i], ini, (*j) - ini);
+				g->we_texture = ft_substr(g->file_char[i], ini, (*j + 1) - ini);
 			if (opt == 4)
-				g->ea_texture = ft_substr(g->file_char[i], ini, (*j) - ini);
+				g->ea_texture = ft_substr(g->file_char[i], ini, (*j + 1) - ini);
 		}
 	}
 	(*j)--;
@@ -75,6 +75,7 @@ void	get_data(t_general *g, size_t i, size_t *j, int opt)
 {
 	if (!check_name_data(g, i, j, opt))
 		return ;
+	check_repeat_variable(g, opt);
 	(*j)++;
 	if (opt <= 4)
 		*j += 1;
@@ -89,6 +90,8 @@ void	fill_data(t_general *g)
 	size_t	i;
 	size_t	j;
 
+	g->color_floor = -1;
+	g->color_celing = -1;
 	i = -1;
 	while (g->file_char[++i])
 	{

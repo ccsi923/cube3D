@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   double_pointer_len.c                               :+:      :+:    :+:   */
+/*   pixel_color.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emgarcia <emgarcia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vguttenb <vguttenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/25 16:32:05 by emgarcia          #+#    #+#             */
-/*   Updated: 2023/03/29 23:31:16 by emgarcia         ###   ########.fr       */
+/*   Created: 2023/03/25 19:17:51 by vguttenb          #+#    #+#             */
+/*   Updated: 2023/03/29 21:03:43 by vguttenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube3d.h"
 
-size_t	double_pointer_len(char **double_pointer)
-{
-	size_t	len;
+int	pixel_color(t_img *img, int x, int y)
+{	
+	int	color;
 
-	if (!double_pointer)
-		return (0);
-	len = 0;
-	while (double_pointer[len])
-		len++;
-	return (len);
+	color = *(int *)(img->addr + y * img->line_length + x \
+						* img->bits_per_pixel / 8);
+	return (color);
 }
